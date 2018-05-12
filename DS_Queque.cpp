@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 template <class T>
 class Queue {
 private:
@@ -10,11 +7,12 @@ private:
 		capacity *= 2;
 		T* newarr = new T[capacity];
 		for (int i = 0; i < capacity / 2; i++) {
-			if(i <= rear) newarr[i] = arr[i];
-			if(i > rear) newarr[i+capacity/2] = arr[i];
+			if (i <= rear) newarr[i] = arr[i];
+			if (i > rear) newarr[i + capacity / 2] = arr[i];
 		}
 		delete[]arr;
 		arr = newarr;
+		if (front > rear) front = front + capacity / 2;
 	}
 public:
 	Queue() {
